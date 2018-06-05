@@ -28,13 +28,15 @@
     "install": "0.1.8",
     "jquery.cookie": "^1.4.1",
     "re-base": "1.2.1",
-    "react": "^15.0.0",
-    "react-addons-css-transition-group": "^15.0.0",
+    "react": "^15.6.1",
+    "react-addons-css-transition-group": "^15.6.0",
+    "react-addons-transition-group": "^15.6.0",
     "react-catalyst": "0.3.0",
-    "react-dom": "^15.0.0",
+    "react-dom": "^15.6.1",
     "react-mixin": "3.0.0",
     "react-router": "1.0.0-rc3",
     "react-router-dom": "^4.1.2",
+    "reactstrap": "^4.8.0",
     "universal-cookie": "^2.0.8",
     "vinyl-buffer": "1.0.0",
     "vinyl-source-stream": "1.1.0",
@@ -42,6 +44,10 @@
     "whatwg-fetch": "^2.0.3"
   },
   "dependencies": {
-    "jquery": "^3.2.1"
+    "d3": "^4.11.0",
+    "d3.js": "0.0.2-security",
+    "jquery": "^3.2.1",
+    "tinycolor2": "^1.4.1",
+    "venn.js": "^0.2.20"
   }
 }

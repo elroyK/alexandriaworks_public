@@ -42,7 +42,6 @@ class FavDoc extends React.Component {
             var dId = this.state.key.toString();
             cookies.set("favs", "-" + dId + "-", {path: '/'});
         }
-        h.starBounce();
         this.props.update();
     }
     
@@ -92,9 +91,9 @@ class FavDoc extends React.Component {
                 </a>
                 <a onClick={this.fav} className="favLink">
                     {this.isFav() ? (
-                        <i className="fa fa-star" aria-hidden="true"></i>
+                        <i className="fa fa-thumb-tack checked" aria-hidden="true"></i>
                     ) : (
-                        <i className="fa fa-star-o" aria-hidden="true"></i>
+                        <i className="fa fa-thumb-tack" aria-hidden="true"></i>
                     )}
                 </a>
             </li>

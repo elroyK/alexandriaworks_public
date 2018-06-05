@@ -1,13 +1,13 @@
 /*
-Header
-<Header/>
+StoryPanel
+<StoryPanel/>
 */
 
 import React from 'react';
 
 var http = require('http');
 
-class Header extends React.Component {
+class StoryPanel extends React.Component {
     
     constructor(props) {
         super(props);
@@ -15,11 +15,11 @@ class Header extends React.Component {
 
     render() {
         return (
-            <header>
-                <h1>Alexandria.Works</h1>
-            </header>
+            <nav className="sidebar" id="storylines">
+                
+            </nav>
         )
     }
 }
 
-export default Header;
+export default StoryPanel;

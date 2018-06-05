@@ -6,12 +6,22 @@ App
 import React from 'react';
 import { History } from 'react-router';
 import Header from './Header';
-import QueryResults from './QueryResults';
-import Favorites from './Favorites';
-import DocViewer from './DocViewer';
+import NavPanel from './NavPanel';
+import StoryPanel from './StoryPanel';
+import SearchPanel from './SearchPanel';
+import ResultsPanel from './ResultsPanel';
+import DocPanel from './DocPanel';
+import PinnedPanel from './PinnedPanel';
 import reactMixin from 'react-mixin';
 import autobind from 'autobind-decorator';
 var http = require('http');
+import Cookies from 'universal-cookie';
+
+import env from '../env';
+import h from '../helpers';
+import $ from 'jquery';
+
+const cookies = new Cookies();
 
 @autobind
 class App extends React.Component {
@@ -19,38 +29,62 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            query: this.props.location.state,
-            doc: null
+            panels:[],
+            lastAddedComponent: 'search',
+        };
+        if (!cookies.get("favs")) cookies.set("favs","-");
+        
+        this.search = this.search.bind(this);
+        this.displayDoc = this.displayDoc.bind(this);
+    }
+    
+    componentDidUpdate() {
+        $('html,body').animate({
+        scrollTop: $('.panel:last-child').position().top},
+        'slow');
+    }
+    
+    search(myQuery) {
+        var tempPanels = this.state.panels;
+        if (this.state.lastAddedComponent == 'results') {
+            tempPanels.pop();
         }
+        var tempComp = <ResultsPanel key={tempPanels.length} query={myQuery} displayDoc={() => this.displayDoc} idkey={tempPanels.length} />;
+        tempPanels.push(tempComp);
+        this.setState({panels: tempPanels, lastAddedComponent: 'results'});
     }
     
-    docIdCallback(document) {
-        this.setState({doc: document});
+    displayDoc(dDocId) {
+        var tempPanels = this.state.panels;
+        if (this.state.lastAddedComponent == 'document') {
+            tempPanels.pop();
+        }
+        var tempComp = <DocPanel key={tempPanels.length} docId={dDocId} />;
+        tempPanels.push(tempComp);
+        this.setState({panels: tempPanels, lastAddedComponent: 'document'});
     }
     
-    goToFav() {
-        this.history.pushState('Favorites', '/fav');
+    showPinned() {
+        var tempPanels = this.state.panels;
+        if (this.state.lastAddedComponent == 'pinned') {
+            tempPanels.pop();
+        }
+        var tempComp = <PinnedPanel key={tempPanels.length} docIdCallback={() => this.displayDoc} />;
+        tempPanels.push(tempComp);
+        this.setState({panels: tempPanels, lastAddedComponent: 'pinned'});
     }
-
+    
     render() {
+        
         return (
-            <div>
-                <Header query={this.state.query}/>
+            <div id="app">
+                <Header/>
+                <NavPanel showPinned={() => this.showPinned}/>
                 <div id="appContent">
-                    {this.state.query === "Favorites"
-                        ? <Favorites docIdCallback={() => this.docIdCallback}/>
-                        : <QueryResults query={this.state.query} docIdCallback={() => this.docIdCallback}/>
-                    }
-                    {this.state.doc
-                        ? <DocViewer docId={this.state.doc.id}/>
-                        : <span></span>
-                    }
+                    <SearchPanel search={() => this.search}/>
+                    {this.state.panels}
                 </div>
-                <div id="cornerLink" className="toFavs">
-                    <a onClick={this.goToFav}>
-                        <i id="cornerIcon" className="fa fa-star" aria-hidden="true"></i>
-                    </a>
-                </div>
+                <StoryPanel/>
             </div>
         )
     }

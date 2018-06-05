@@ -1,14 +1,15 @@
 body {
-    background-color: $gallery;
+    background-color: $bg-light;
     height: 100vh !important;
-    height: 100vw !important;
-    overflow: hidden;
+    width: 100vw !important;
+    margin: 0;
+    overflow-x: hidden;
 }
 
 * {
     
     box-sizing: border-box;
-    color: $cod-gray;
+    color: $dark-accent;
     font-family: "freight-sans-pro";
     transition: all linear .1s;
     
@@ -37,7 +38,7 @@ h1 {
 
 #main {
     height: 100%;
-    
+    padding: 0;
 }
 
 a:hover {

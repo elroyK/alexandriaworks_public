@@ -41,7 +41,7 @@ class QueryDoc extends React.Component {
             var dId = this.state.key.toString();
             cookies.set("favs", "-" + dId + "-", {path: '/'});
         }
-        h.starBounce();
+        //h.starBounce();
         this.forceUpdate();
     }
     
@@ -65,7 +65,7 @@ class QueryDoc extends React.Component {
                         </span>
                         <span className="doc_collec">
                             <i className="fa fa-folder-open" aria-hidden="true"></i>&nbsp;
-                            {this.state.doc.collName}
+                            {this.state.doc.collection}
                         </span>
                     </p>
                     <div className="doc_snippet">
@@ -79,13 +79,17 @@ class QueryDoc extends React.Component {
                             <i className="fa fa-link" aria-hidden="true"></i>&nbsp;
                             {this.state.doc.uri}
                         </span>
+                        <span className="doc_weight">
+                            <i className="fa fa-cube" aria-hidden="true"></i>&nbsp;
+                            {this.state.doc.weight}
+                        </span>
                     </p>
                 </a>
                 <a onClick={this.fav} className="favLink">
                     {this.isFav() ? (
-                        <i className="fa fa-star" aria-hidden="true"></i>
+                        <i className="fa fa-thumb-tack checked" aria-hidden="true"></i>
                     ) : (
-                        <i className="fa fa-star-o" aria-hidden="true"></i>
+                        <i className="fa fa-thumb-tack" aria-hidden="true"></i>
                     )}
                 </a>
             </li>
