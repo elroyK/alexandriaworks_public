@@ -19,6 +19,14 @@ let helpers =  {
         
         element.classList.toggle("bounce");
         window.setTimeout(function(){element.classList.toggle("bounce")}, 1000);
+    },
+    
+    compareWeight(a,b) {
+        if (a.weight > b.weight)
+            return -1;
+        if (a.weight < b.weight)
+            return 1;
+        return 0;
     }
 }
 

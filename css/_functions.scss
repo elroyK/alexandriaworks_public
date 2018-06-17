@@ -1,0 +1,10 @@
+$zIndex: 99;
+$childIndex: 1;
+
+@while $zIndex > 0 {
+    .panel:nth-child($childIndex){
+        z-index: $zIndex;
+    }
+  $zIndex: $zIndex - 1;
+  $childIndex: $childIndex + 1;
+}

@@ -22,18 +22,18 @@
         
         border: none;
         background-color: transparent;
-        border-bottom: 1px solid $picton-blue;
+        border-bottom: 1px solid $accent;
         font-size: 2.5em;
-        color: $turquoise;
+        color: $accent;
         width: 95%;
         
         &:placeholder-shown {
-            border-bottom: 1px solid $transp-picton-blue;
+            border-bottom: 1px solid $transp-accent;
         }
         
         &:focus {
             outline: none;
-            border-bottom: 2px solid $picton-blue;
+            border-bottom: 2px solid $accent;
         }
     }
     
@@ -47,7 +47,7 @@
         
         i.fa {
             -webkit-text-stroke-width: .8px;
-            -webkit-text-stroke-color: $picton-blue;
+            -webkit-text-stroke-color: $accent;
             color: $none;
         }
         
@@ -59,7 +59,7 @@
         &:hover {
             
             i.fa {
-                color: $picton-blue;
+                color: $accent;
             }
         }
     }

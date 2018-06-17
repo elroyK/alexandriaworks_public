@@ -1,8 +1,21 @@
-$light-picton-blue: #3dd8e3;
-$picton-blue: darken(#3dd8e3, 10%);
-$transp-picton-blue: darken(rgba(61,216,227,.5), 10%);
-$turquoise: darken(#2dcdcd, 10%);
-$gallery: #ECECEC;
+$accent: #E4BF75;
+$accenter: darken($accent, 10%);
+$dark-accent: darken($accent, 50%);
+$transp-accent: rgba(228,191,117,.5);
+$light-accent: lighten($accent,50%);
 $cod-gray: #0e0e0e;
 $transp-cod-gray: rgba(13,13,13,.2);
 $none: rgba(0,0,0,0);
+$grey: #020202;
+$grey-light: lighten($grey, 20%);
+$grey-lighter: lighten($grey-light,10%);
+$grey-lightest: lighten($grey-lighter,10%);
+$blue: #132c50;
+$blue-dark: #07111F;
+$blue-light: lighten($blue, 20%);
+$blue-lighter: lighten($blue-light, 20%);
+$blue-lightest: lighten($blue-lighter, 40%);
+
+$bg: mix($grey, $blue, 98);
+$bg-light: lighten($bg, 8%);
+$bg-lighter: lighten($bg-light,10%);
