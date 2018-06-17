@@ -1,9 +1,12 @@
 let env = {
     search() {
-        return "http://API.url/api/search";
+        return "http://API.URL/api/search";
     },
     document() {
-        return "http://API.url/api/document";
+        return "http://API.URL/api/document";
+    },
+    collections() {
+        return "http://API.URL/collections";
     }
 }
 
